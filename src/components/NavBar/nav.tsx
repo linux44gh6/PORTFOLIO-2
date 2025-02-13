@@ -72,6 +72,7 @@ const NavBarPage = () => {
         link?.map(li=><Link key={li.title} className='text-white font-bold text-lg md:text-lg font-font1 capitalize'
            href={`#${li.section}`}>{li.title}</Link>)
       }
+      <Link href={'/blog'} className='text-white font-bold text-lg md:text-lg font-font1 capitalize'>Blog</Link>
     </ul>
     <div className="ms-2">
     <button className="btn rounded-full bg-gradient-to-r from-color1 to-color2  
