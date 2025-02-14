@@ -14,11 +14,10 @@ const skills = [
 
 const SkillPage = () => {
   return (
-    <section id="skill-section" className="bg-color3 py-5 mt-10">
+    <section id="skill-section" className="bg-color3 py-5 ">
       <h1 className="text-center text-5xl pt-10 font-font1 font-extrabold bg-gradient-to-r from-color1 to-yellow-50 text-transparent bg-clip-text">
         My Skills
       </h1>
-
       <div className="px-10 flex flex-wrap gap-16 mt-8">
         {/* First Marquee */}
         <Marquee direction="right">

@@ -1,4 +1,5 @@
 
+import FooterPage from '@/components/Footer/Footer';
 import NavBarPage from '@/components/NavBar/nav';
 import { ReactNode } from 'react';
 
@@ -8,9 +9,11 @@ interface LayoutProps {
 
 const layout = ({ children }: LayoutProps) => {
     return (
-        <div className='bg-gradient-to-r from-color3 to-color4 w-[100%]'>
+        
+        <div className=''>
             <NavBarPage/>
             {children}
+            <FooterPage/>
         </div>
     );
 };

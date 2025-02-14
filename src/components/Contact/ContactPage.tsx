@@ -5,7 +5,7 @@ import { MdLocationPin } from "react-icons/md";
 const ContactPage = () => {
     return (
        <section id='contact-section'>
-             <div className=' flex flex-col lg:flex-row bg-black mt-10 lg:mt-20 w-full gap-5 p-10'>
+             <div className=' flex flex-col lg:flex-row bg-black w-full gap-5 p-10'>
             <div className="hero  min-h-screen w-full md:w-[700px] lg:w-[700px] bg-color3 rounded-2xl ">
                 <div className="hero-content flex-col pe-20 ">
                     <div className="text-center lg:text-left">

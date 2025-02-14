@@ -26,14 +26,14 @@ const NavBarPage = () => {
         //     title:'Testomonials',
         //     section:'education-section'
         // },
-        {
-            title:'Contact',
-            section:'contact-section'
-        },
+        // {
+        //     title:'Contact',
+        //     section:'contact-section'
+        // },
     ]
     return (
-        <div>
-            <div className="navbar w-[100%]">
+        <div >
+            <div className="navbar bg-gradient-to-r from-color3 to-color4">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost text-white lg:hidden">
@@ -57,13 +57,15 @@ const NavBarPage = () => {
         link?.map(li=><Link key={li.title} className='text-black font-bold text-xl font-font1 capitalize'
            href={`#${li.section}`}>{li.title}</Link>)
       }
+      <Link href={'/blog'} className='text-black font-bold text-lg md:text-lg font-font1 capitalize'>Blog</Link>
+      <Link href={'/contact'} className='text-black font-bold text-lg md:text-lg font-font1 capitalize'>Contact</Link>
       </ul>
     </div>
    <div>
     
-   <a className="flex  items-center text- text-white"> <Image width={200} height={12}  className="w-[50px] sm:w-[80px] md:w-[100px] lg:w-[100px] xl:w-[100px]"  src="/logo.png" alt="next" /> 
+   <div className="flex  items-center text- text-white"> <Link href={'/'}><Image width={200} height={12}  className="w-[50px] sm:w-[80px] md:w-[100px] lg:w-[100px] xl:w-[100px]"  src="/logo.png" alt="next" /></Link> 
 
-   <span className='font-font1 lg:text-2xl'>abireshan32@gmail.com</span></a>
+   <span className='font-font1 lg:text-2xl'>abireshan32@gmail.com</span></div>
    </div>
   </div>
   <div className="navbar-end hidden lg:flex">
@@ -73,10 +75,11 @@ const NavBarPage = () => {
            href={`#${li.section}`}>{li.title}</Link>)
       }
       <Link href={'/blog'} className='text-white font-bold text-lg md:text-lg font-font1 capitalize'>Blog</Link>
+      <Link href={'/contact'} className='text-white font-bold text-lg md:text-lg font-font1 capitalize'>Contact</Link>
     </ul>
     <div className="ms-2">
     <button className="btn rounded-full bg-gradient-to-r from-color1 to-color2  
-    hover:bg-gradient-to-r hover:from-color2 hover:to-color1 text-white transition font-bold">Hire Me!</button>
+    hover:bg-gradient-to-r hover:from-color2 hover:to-color1 text-white transition font-bold">Login</button>
   </div>
   </div>
  

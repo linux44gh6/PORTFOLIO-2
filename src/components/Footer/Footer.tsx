@@ -2,7 +2,7 @@ import React from 'react';
 
 const FooterPage = () => {
     return (
-        <div className='bg-color3'>
+        <div className='bg-gradient-to-r from-color3 to-color4'>
             <div className=' flex justify-center'>
                 <img className='w-32' src="logo.png" alt="" />
             </div>

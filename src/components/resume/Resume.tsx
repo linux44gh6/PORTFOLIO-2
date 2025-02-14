@@ -4,7 +4,7 @@ import { SlBadge } from "react-icons/sl";
 const ResumePage = () => {
     return (
         <section id='education-section'>
-            <div className=' bg-color3 mt-0 lg:mt-20 pb-16'>
+            <div className=' bg-color3 mt-0  pb-16'>
             <h1 className='text-center text-2xl  lg:text-5xl font-font1 font-extrabold text-yellow-50 ; pt-20 lg:pt-10'><span className='bg-gradient-to-r from-color1 to-yellow-50 inline-block text-transparent bg-clip-text'>Education</span> & <span className='bg-gradient-to-r from-color1 to-yellow-50 inline-block text-transparent bg-clip-text'>Experience</span></h1>
 
             <div className='flex flex-col lg:flex-row justify-between px-10 mt-10'>

@@ -1,8 +1,9 @@
+import ContactPage from "@/components/Contact/ContactPage";
 
 const page = () => {
     return (
         <div className="min-h-screen">
-            <h1>This is Blog age</h1>
+            <ContactPage/>
         </div>
     );
 };

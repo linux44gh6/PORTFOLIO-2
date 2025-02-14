@@ -8,15 +8,14 @@ import { FaDribbble } from "react-icons/fa";
 import CountUp from 'react-countup';
 // import ScrollTrigger from 'react-scroll-trigger';
 const BannerPage = () => {
-
     return (
-        <div>
+        <div className='bg-gradient-to-r from-color3 to-color4 p-4'>
         <div className='flex flex-col md:flex-row lg:flex-row justify-around items-center'>
             <div className=''>
                 <h1 className=' text-yellow-50 text-5xl font-extrabold font-font1'>I am Milon</h1>
                 <h1 className='text-3xl lg:text-8xl font-extrabold font-font1 bg-gradient-to-r from-color1 to-yellow-50 inline-block text-transparent bg-clip-text'>Web Developer </h1>
                 <p className=' w-full md:w-[500px] lg:w-[500px] text-yellow-50 text-xl mt-4 mb-10'>I break down complex user experinece problems to create integritiy focussed solutions that connect billions of people</p>
-                <div className='flex flex-col md:flex-row lg:flex-row gap-5 items-center'>
+                <div className='flex flex-col md:flex-row lg:flex-row gap-5 items-center mb-4'>
                    <a href="https://drive.google.com/file/d/1sLPyA6rkMf-8Si5eJMgEpCvw7xv3rE3c/view" download='download.pdf' target='blank'>
                    <button className='btn rounded-full border border-color1 text-color1 bg-color2 hover:text-yellow-50 hover:bg-color1'>Download Resume <span className='text-xl'><MdOutlineFileDownload></MdOutlineFileDownload></span></button>
                    </a>
