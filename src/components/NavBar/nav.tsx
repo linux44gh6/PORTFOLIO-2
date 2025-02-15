@@ -78,8 +78,9 @@ const NavBarPage = () => {
       <Link href={'/contact'} className='text-white font-bold text-lg md:text-lg font-font1 capitalize'>Contact</Link>
     </ul>
     <div className="ms-2">
-    <button className="btn rounded-full bg-gradient-to-r from-color1 to-color2  
-    hover:bg-gradient-to-r hover:from-color2 hover:to-color1 text-white transition font-bold">Login</button>
+    <Link href={'/login'}>
+    <button className="btn rounded-full px-6 bg-color4  
+    hover:bg-color1 text-white transition font-bold">Login</button></Link>
   </div>
   </div>
  
