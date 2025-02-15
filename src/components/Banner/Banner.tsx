@@ -6,6 +6,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaDribbble } from "react-icons/fa";
 import CountUp from 'react-countup';
+import Image from 'next/image';
 // import ScrollTrigger from 'react-scroll-trigger';
 const BannerPage = () => {
     return (
@@ -35,7 +36,7 @@ const BannerPage = () => {
             <div>
                 <div className='border-2 border-color4 hover:border-color1 rounded-lg lg:rotate-3 hover:rotate-0 transition-all duration-300'>
                     
-                    <img className='bg-black w-[400px] rounded-lg ' src="https://i.ibb.co/rxtT0Nz/tinywow-change-bg-photo-59253256.png" alt="Imge not found" />
+                    <Image className='bg-black w-[400px] rounded-lg ' src="https://i.ibb.co/rxtT0Nz/tinywow-change-bg-photo-59253256.png" alt="Imge not found" width={400} height={400} />
                 </div>
             </div>
            

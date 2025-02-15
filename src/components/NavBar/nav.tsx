@@ -13,7 +13,6 @@ const NavBarPage = ({ season }: SeasonProps) => {
   const link: Props[] = [
     { title: 'service', section: 'service' },
     { title: 'Works', section: 'project-section' },
-    { title: 'Resume', section: 'education-section' },
     { title: 'Skills', section: 'skill-section' },
   ];
 
@@ -45,6 +44,9 @@ const NavBarPage = ({ season }: SeasonProps) => {
               <Link href="/contact" className="text-black font-bold text-lg md:text-lg font-font1 capitalize">
                 Contact
               </Link>
+              <Link href="/dashboard" className="text-black font-bold text-lg md:text-lg font-font1 capitalize">
+                DashBoard
+              </Link>
             </ul>
           </div>
           <div>
@@ -68,6 +70,9 @@ const NavBarPage = ({ season }: SeasonProps) => {
             </Link>
             <Link href="/contact" className="text-white font-bold text-lg md:text-lg font-font1 capitalize">
               Contact
+            </Link>
+            <Link href="/dashboard" className="text-white font-bold text-lg md:text-lg font-font1 capitalize">
+              DashBoard
             </Link>
           </ul>
           <div className="ms-2">
