@@ -1,15 +1,18 @@
+'use client'
 import Image from 'next/image';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { signIn } from 'next-auth/react';
 
 const LoginPage = () => {
+
     return (
         <div className='flex items-center justify-center min-h-screen border-2 '>
             <div className=''>
                 <Image src={'/LoginImage.jpg'} alt='Login Image' width={600} height={100}/>
             </div>
             
-           <div className='flex items-center  justify-center '>
+           <div className='flex items-center flex-col  justify-center '>
            <form>
                <div className='flex flex-col justify-center items-center gap-4'>
               
@@ -29,12 +32,16 @@ const LoginPage = () => {
                </div>
                <button className='btn bg-color1 text-white w-full'>Login</button>
                <div className="divider">OR</div>
-                    <div className='flex justify-center gap-5'>
-                        <FcGoogle className='text-4xl'></FcGoogle>
-                        <FaGithub className='text-4xl'></FaGithub>
-                    </div>
                </div>
             </form>
+            <div className='flex justify-center gap-5'>
+                        <button onClick={()=>signIn('google',{
+                            callbackUrl:"http://localhost:3000"
+                        })} className='w-full'><FcGoogle className='text-4xl'></FcGoogle></button>
+                        <button onClick={()=>signIn("github",{
+              callbackUrl:"http://localhost:3000"
+            })} className='  w-full'><FaGithub className='text-4xl'></FaGithub></button>
+                    </div>
            </div>
         </div>
     );
