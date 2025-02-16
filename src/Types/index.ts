@@ -18,3 +18,12 @@ export interface Blog {
     likes: string;
   }
   
+  export interface Project {
+    _id: string;
+    title: string;
+    description: string;
+    date: string;
+    image: string;
+    github_link: string;
+    live_link: string;
+  }
