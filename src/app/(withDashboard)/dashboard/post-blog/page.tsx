@@ -1,9 +1,11 @@
+"use server"
+import BlogForm from "@/components/ui/blogForm";
 
 
 const page = () => {
     return (
-        <div>
-            <h1>post blog</h1>
+        <div className="">
+            <BlogForm/>
         </div>
     );
 };

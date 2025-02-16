@@ -1,10 +1,8 @@
-import MySidebar from "@/components/My-Sidebar/My-Siderbar";
-
 
 const page = () => {
     return (
         <div>
-            <MySidebar/>
+            <h1>this is dashboard</h1>
         </div>
     );
 };

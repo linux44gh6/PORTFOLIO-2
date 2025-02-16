@@ -1,20 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Session } from "next-auth";
-type Props = {
-    title:string,
-    section:string
-}
 type SeasonProps = {
   season:Session|null
 };
 
 const NavBarPage = ({ season }: SeasonProps) => {
-  const link: Props[] = [
-    { title: 'service', section: 'service' },
-    { title: 'Works', section: 'project-section' },
-    { title: 'Skills', section: 'skill-section' },
-  ];
+ 
 
   return (
     <div>
@@ -33,11 +25,10 @@ const NavBarPage = ({ season }: SeasonProps) => {
               </svg>
             </div>
             <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-              {link.map((li) => (
-                <Link key={li.title} className="text-black font-bold text-xl font-font1 capitalize" href={`#${li.section}`}>
-                  {li.title}
-                </Link>
-              ))}
+            
+              <Link href="/project" className="text-black font-bold text-lg md:text-lg font-font1 capitalize">
+                Projects
+              </Link>
               <Link href="/blog" className="text-black font-bold text-lg md:text-lg font-font1 capitalize">
                 Blog
               </Link>
@@ -60,11 +51,10 @@ const NavBarPage = ({ season }: SeasonProps) => {
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1 flex gap-5">
-            {link.map((li) => (
-              <Link key={li.title} className="text-white font-bold text-lg md:text-lg font-font1 capitalize" href={`#${li.section}`}>
-                {li.title}
-              </Link>
-            ))}
+            
+            <Link href="/project" className="text-white font-bold text-lg md:text-lg font-font1 capitalize">
+              Projects
+            </Link>
             <Link href="/blog" className="text-white font-bold text-lg md:text-lg font-font1 capitalize">
               Blog
             </Link>
