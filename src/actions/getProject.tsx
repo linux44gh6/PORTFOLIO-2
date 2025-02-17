@@ -1,7 +1,7 @@
 "use server"
-export const getBlogs = async () => {
+export const getProject = async () => {
     try {
-        const res = await fetch(`${process.env.SERVER_URL}/api/blog`, {
+        const res = await fetch(`${process.env.SERVER_URL}/api/project`, {
             cache: "no-cache",
         });
 

@@ -6,8 +6,6 @@ type SeasonProps = {
 };
 
 const NavBarPage = ({ season }: SeasonProps) => {
- 
-
   return (
     <div>
       <div className="navbar bg-gradient-to-r from-color3 to-color4">
@@ -69,7 +67,7 @@ const NavBarPage = ({ season }: SeasonProps) => {
             {season?.user ? (
               <span>
                 <Image
-                  src={season.user.image || '/default-avatar.png'} // Use a default image if missing
+                  src={season.user.image || '/default-avatar.png'}
                   width={40}
                   height={40}
                   alt="Profile"

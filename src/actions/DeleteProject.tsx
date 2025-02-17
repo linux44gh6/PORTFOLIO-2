@@ -1,7 +1,7 @@
 'use server'
-export const deleteBlog = async (id: string) => {
+export const deleteProject = async (id: string) => {
     try {
-        const res = await fetch(`${process.env.SERVER_URL}/api/blog/${id}`, {
+        const res = await fetch(`${process.env.SERVER_URL}/api/project/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

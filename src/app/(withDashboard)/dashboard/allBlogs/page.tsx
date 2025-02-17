@@ -1,6 +1,7 @@
+"use client";
 
-"use server"
-
+import { useEffect, useState } from "react";
+import { getBlogs } from "@/actions/getBlogs";
 import { Button } from "@/components/ui/button";
 import {
     Table,
@@ -10,14 +11,43 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 import { Blog } from "@/Types";
-const page = async() => {
-    const res = await fetch(`${process.env.SERVER_URL}/api/blog`,
-        {
-            cache: "no-store" 
-           });
-   const blogs = await res.json();
+import Spinner from "@/components/ui/Sppiner";
+import { deleteBlog } from "@/actions/DeleteBlog";
+
+// Define the component with proper type annotations
+const Page = () => {
+    const [blogs, setBlogs] = useState<Blog[] | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
+
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            const data = await getBlogs(); 
+            setBlogs(data.data || []);
+        };
+
+        fetchBlogs();
+    }, []); // Runs once on component mount
+
+    if (!blogs) {
+        return <Spinner/>
+    }
+    const handelToDelete=async(id:string)=>{
+        setLoading(true)
+        try {
+            await deleteBlog(id);
+            const data = await getBlogs();
+            setBlogs(data.data || []);
+            setLoading(false)
+        } catch (error) {
+            console.error("Error fetching blogs:", error);
+            setLoading(false)
+        }
+    }
+    if (loading) {
+        return <Spinner/>
+    }
     return (
         <div className="w-[90%] mx-auto py-5">
             <Table>
@@ -26,26 +56,27 @@ const page = async() => {
                     <TableRow className="bg-gradient-to-r from-color3 to-color4">
                         <TableHead className="w-[100px] text-gray-400">Blog</TableHead>
                         <TableHead className="text-gray-400">Title</TableHead>
-                        <TableHead className="text-gray-400 ">Author_name</TableHead>
-                        <TableHead className="text-gray-400 ">Posted_date</TableHead>
-                        <TableHead className="text-gray-400  text-right">Action</TableHead>
+                        <TableHead className="text-gray-400">Author_name</TableHead>
+                        <TableHead className="text-gray-400">Posted_date</TableHead>
+                        <TableHead className="text-gray-400 text-right">Action</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                   {
-                    blogs.data.map((blog:Blog,index:number)=> <TableRow key={index}>
-                    <TableCell className="font-medium">{index+1}</TableCell>
-                    <TableCell>{blog?.title}</TableCell>
-                    <TableCell>{blog?.author}</TableCell>
-                    <TableCell>{blog?.date.slice(0,10)}</TableCell>
-                    <TableCell className="text-right"><Button  className="bg-color4">Delete</Button></TableCell>
-                </TableRow>)
-                   }
+                    {blogs.map((blog: Blog, index: number) => (
+                        <TableRow key={index}>
+                            <TableCell className="font-medium">{index + 1}</TableCell>
+                            <TableCell>{blog?.title}</TableCell>
+                            <TableCell>{blog?.author}</TableCell>
+                            <TableCell>{blog?.date.slice(0, 10)}</TableCell>
+                            <TableCell className="text-right">
+                                <Button onClick={() => handelToDelete(blog._id)} className="bg-color4">Delete</Button>
+                            </TableCell>
+                        </TableRow>
+                    ))}
                 </TableBody>
             </Table>
-
         </div>
     );
 };
 
-export default page;
+export default Page;

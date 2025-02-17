@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Home, Inbox, Search, Settings, Menu } from "lucide-react";
+import { Calendar, Home, Inbox,  Settings, Menu,Folder, TableOfContents} from "lucide-react";
 import React, { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import {
@@ -19,9 +19,9 @@ const items = [
   { title: "Home", url: "/", icon: Home },
   { title: "Inbox", url: "/inbox", icon: Inbox },
   { title: "Post-Blog", url: "/dashboard/post-blog", icon: Calendar },
-  { title: "Post-Project", url: "/dashboard/project", icon: Search },
-  { title: "Projects", url: "/dashboard/allProject", icon: Search },
-  { title: "Blogs", url: "/dashboard/allBlogs", icon: Search },
+  { title: "Post-Project", url: "/dashboard/project", icon: TableOfContents },
+  { title: "Projects", url: "/dashboard/allProject", icon: Folder },
+  { title: "Blogs", url: "/dashboard/allBlogs", icon: Folder },
   { title: "Settings", url: "#", icon: Settings },
 ];
 
