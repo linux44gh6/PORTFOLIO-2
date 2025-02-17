@@ -24,11 +24,11 @@ const Page = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             const data = await getProject();
-            setProjects(data.data || []); // Make sure this matches your API response structure
+            setProjects(data.data || []); 
         };
 
         fetchProjects();
-    }, []); // Runs once on component mount
+    }, []); 
 
     // Display spinner if no projects are available yet
     if (projects.length === 0) {
@@ -44,11 +44,11 @@ const Page = () => {
         } catch (error) {
             console.error("Error deleting project:", error);
         } finally {
-            setLoading(false); // Ensure loading state is turned off after completion
+            setLoading(false); 
         }
     };
 
-    // Show loading spinner while deleting
+
     if (loading) {
         return <Spinner />;
     }

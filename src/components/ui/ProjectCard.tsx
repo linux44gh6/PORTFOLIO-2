@@ -1,6 +1,7 @@
 import { Project } from "@/Types";
 import Image from "next/image";
 import { Button } from "./button";
+import Link from "next/link";
 
 const ProjectCard = ({ project }: { project: Project }) => {
     console.log(project);
@@ -18,7 +19,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                                 ? project.description.slice(0, 90) + "..."
                                 : project.description}
                         </p>
-                        <Button>Read More</Button>
+                        <Link href={`/project/${project._id}`}><Button>Read More</Button></Link>
                     </div>
                 </div>
             </div>

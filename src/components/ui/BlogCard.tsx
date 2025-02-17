@@ -31,7 +31,7 @@ const BlogCard = ({ blog }: { blog:Blog }) => {
           {blog.description.length > 100
             ? blog.description.slice(0, 60) + "..."
             : blog.description}
-          <Link href={`/blogs/${blog._id}`} className="text-color4 ml-1">
+          <Link href={`/blog/${blog._id}`} className="text-color4 ml-1">
             Read More
           </Link>
         </p>
