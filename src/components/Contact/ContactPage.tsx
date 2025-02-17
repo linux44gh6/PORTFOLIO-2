@@ -1,8 +1,12 @@
-import React from 'react';
+'use client'
+import { createContact } from "@/actions/contact";
+import Form from "next/form";
 import { FiPhoneCall } from "react-icons/fi";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
+
 const ContactPage = () => {
+
     return (
        <section id='contact-section'>
              <div className=' flex flex-col lg:flex-row bg-black w-full gap-5 p-10'>
@@ -15,43 +19,41 @@ const ContactPage = () => {
                         </p>
                     </div>
                     <div className="  w-full  shrink-0 shadow-2xl">
-                        <form className=" space-y-10">
+                        <Form action={createContact} className=" space-y-10">
                             <div className=' flex flex-col lg:flex-row gap-4'>
                                 <div className="form-control">
-                                    <input type="text" placeholder="First Name" className="input input-bordered lg:pe-20 bg-black bordered hover:border-color1 transition hover:shadow-lg" required />
+                                    <input type="text" name="firstName" placeholder="First Name" className="input input-bordered lg:pe-20 bg-black bordered hover:border-color1 transition hover:shadow-lg" required />
                                 </div>
                                 <div className="form-control">
-                                    
-                                    <input type="text" placeholder="Last Name" className="input input-bordered lg:pe-20 bg-black bordered hover:border-color1 transition hover:shadow-lg" required />
+                                    <input type="text" name="lastName" placeholder="Last Name" className="input input-bordered lg:pe-20 bg-black bordered hover:border-color1 transition hover:shadow-lg" required />
                                 </div>
                             </div>
                             <div className=' flex  flex-col lg:flex-row gap-4'>
                                 <div className="form-control">
-                                    <input type="email" placeholder="Email Address" className="input input-bordered lg:pe-20 bg-black bordered hover:border-color1 transition hover:shadow-lg" required />
+                                    <input type="email" name="email" placeholder="Email Address" className="input input-bordered lg:pe-20 bg-black bordered hover:border-color1 transition hover:shadow-lg" required />
                                 </div>
                                 <div className="form-control">
-                                    <input type="number" placeholder="Phone Number" className="input input-bordered lg:pe-20 bg-black bordered hover:border-color1 transition hover:shadow-lg" required />
+                                    <input type="number" name="phone" placeholder="Phone Number" className="input input-bordered lg:pe-20 bg-black bordered hover:border-color1 transition hover:shadow-lg" required />
                                 </div>
                             </div>
                             <div>
-                                <select className="select select-bordered w-full bg-black bordered hover:border-color1 transition hover:shadow-lg text-yellow-50 ">
-                                    <option disabled selected>-chosse  </option>
-                                    <option>web development</option>
+                                <select name="service" className="select select-bordered w-full bg-black bordered hover:border-color1 transition hover:shadow-lg text-yellow-50 " defaultValue=""> 
+                                    <option value="" disabled>-choose-</option>
+                                    <option value="web development">web development</option>
                                 </select>
                             </div>
                             <div className="form-control bg-black">
-                                    <textarea className="textarea bg-black bordered hover:border-color1 transition hover:shadow-lg" placeholder="Message"></textarea>
-                                </div>
-                            <div className="form-control mt-6">
-                                <button className="btn w-[200px] rounded-full bg-gradient-to-r from-color1 text-yellow-50 to-color4 text-lg">Send Message</button>
+                                <textarea name="message" className="textarea bg-black bordered hover:border-color1 transition hover:shadow-lg" placeholder="Message"></textarea>
                             </div>
-                        </form>
+                            <div className="form-control mt-6">
+                                <button type="submit" className="btn w-[200px] rounded-full bg-gradient-to-r from-color1 text-yellow-50 to-color4 text-lg">Send Message</button>
+                            </div>
+                        </Form>
                     </div>
                 </div>
             </div>
             <div className='w-full'>
                 <h1 className=' text-5xl bg-gradient-to-r from-color1 to-yellow-50 inline-block text-transparent bg-clip-text font-font1 font-extrabold mb-4'>Contact Info</h1>
-
                 <div className='flex items-center gap-4 mb-5'>
                     <span className=' bg-gradient-to-t from-color4 to-color3 rounded-full lg:p-3'>
                         <FiPhoneCall className='lg:text-5xl text-white'></FiPhoneCall>

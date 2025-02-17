@@ -20,6 +20,8 @@ const items = [
   { title: "Inbox", url: "/inbox", icon: Inbox },
   { title: "Post-Blog", url: "/dashboard/post-blog", icon: Calendar },
   { title: "Post-Project", url: "/dashboard/project", icon: Search },
+  { title: "Projects", url: "/dashboard/allProject", icon: Search },
+  { title: "Blogs", url: "/dashboard/allBlogs", icon: Search },
   { title: "Settings", url: "#", icon: Settings },
 ];
 
