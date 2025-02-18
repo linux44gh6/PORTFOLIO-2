@@ -1,13 +1,15 @@
+'use server'
 import ProfilePage from "@/components/Profile/ProfilePage";
 import { getServerSession } from "next-auth";
-const page = () => {
-    const season=getServerSession()
-    console.log(season);
+
+const Page = async () => {
+    const session = await getServerSession();
+
     return (
         <div>
-            <ProfilePage/>
+            <ProfilePage session={session} />
         </div>
     );
 };
 
-export default page;
+export default Page;

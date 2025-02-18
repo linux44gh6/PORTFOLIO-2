@@ -1,6 +1,17 @@
+'use client'
 import Image from 'next/image';
 import Link from 'next/link';
 import { Session } from "next-auth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { signOut } from 'next-auth/react';
+
 type SeasonProps = {
   season:Session|null
 };
@@ -65,7 +76,8 @@ const NavBarPage = ({ season }: SeasonProps) => {
           </ul>
           <div className="ms-2">
             {season?.user ? (
-              <span>
+              <DropdownMenu>
+              <DropdownMenuTrigger>
                 <Image
                   src={season.user.image || '/default-avatar.png'}
                   width={40}
@@ -73,7 +85,17 @@ const NavBarPage = ({ season }: SeasonProps) => {
                   alt="Profile"
                   className="rounded-full"
                 />
-              </span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Billing</DropdownMenuItem>
+                <DropdownMenuItem>Team</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => signOut()}>LogOut</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
             ) : (
               <Link href="/login">
                 <button className="btn rounded-full px-6 bg-color4 hover:bg-color1 text-white transition font-bold">Login</button>

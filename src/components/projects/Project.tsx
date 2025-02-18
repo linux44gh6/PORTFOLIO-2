@@ -6,7 +6,7 @@ const ProjectPage = () => {
     return (
        <section id='project-section '>
          <div className='  h-[120vh] bg-gradient-to-r from-color3 to-color4 p-4'>
-            <h1 className='text-center  text-5xl font-font1  bg-gradient-to-r from-color1 to-yellow-50 text-transparent bg-clip-text font-extrabold'>My Recent Projects</h1>
+            <h1 className='text-center  text-3xl md:text-5xl lg:text-5xl font-font1  bg-gradient-to-r from-color1 to-yellow-50 text-transparent bg-clip-text font-extrabold'>My Recent Projects</h1>
 
           <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 px-5 mt-10'>
          <Link href='https://tourist-guide-2db3b.web.app' target='_blank'>

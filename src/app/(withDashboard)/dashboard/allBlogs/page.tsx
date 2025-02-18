@@ -49,7 +49,7 @@ const Page = () => {
         return <Spinner/>
     }
     return (
-        <div className="w-[90%] mx-auto py-5">
+        <div className="w-[90%] mx-auto mt-20 md:mt-5 lg:mt-5">
             <Table>
                 <TableCaption>A list of your recent invoices.</TableCaption>
                 <TableHeader>

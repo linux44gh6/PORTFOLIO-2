@@ -17,7 +17,7 @@ import Link from "next/link";
 
 const items = [
   { title: "Home", url: "/", icon: Home },
-  { title: "Inbox", url: "/inbox", icon: Inbox },
+  { title: "Inbox", url: "/dashboard/inbox", icon: Inbox },
   { title: "Post-Blog", url: "/dashboard/post-blog", icon: Calendar },
   { title: "Post-Project", url: "/dashboard/project", icon: TableOfContents },
   { title: "Projects", url: "/dashboard/allProject", icon: Folder },

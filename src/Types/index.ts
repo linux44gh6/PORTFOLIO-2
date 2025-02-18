@@ -29,3 +29,11 @@ export interface Blog {
     github_link: string;
     live_link: string;
   }
+
+  export interface Contact{
+    firstName:string,
+    lastName:string,
+    email:string,
+    message:string
+    service:string
+  }
