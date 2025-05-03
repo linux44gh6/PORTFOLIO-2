@@ -7,19 +7,34 @@ import { FaGithub } from "react-icons/fa";
 import { FaDribbble } from "react-icons/fa";
 import CountUp from 'react-countup';
 import Image from 'next/image';
+import { BackgroundGradient } from '../ui/background-gradient';
+import { motion,AnimatePresence } from "framer-motion";
 // import ScrollTrigger from 'react-scroll-trigger';
 const BannerPage = () => {
     return (
         <div className='bg-gradient-to-r from-color3 to-color4 p-4'>
         <div className='flex flex-col md:flex-row lg:flex-row justify-around items-center'>
             <div className=''>
-                <h1 className=' text-yellow-50 text-5xl font-extrabold font-font1'>I am Milon</h1>
-                <h1 className='text-3xl lg:text-8xl font-extrabold font-font1 bg-gradient-to-r from-color1 to-yellow-50 inline-block text-transparent bg-clip-text'>Web Developer </h1>
+              <AnimatePresence>
+              <motion.h1 
+                animate={{ y: [20, 0], opacity: [0, 1] }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once:true,amount:0.5 }}
+                exit={{ }}
+                transition={{ duration: 1,ease:"easeOut" }}
+                className=' text-yellow-50 text-5xl font-extrabold font-font1'>I am Milon</motion.h1>
+              </AnimatePresence>
+                <h1 className='text-3xl lg:text-7xl font-extrabold font-font1 bg-gradient-to-r from-color1 to-yellow-50 inline-block text-transparent bg-clip-text mt-1'>Computer Engineer</h1>
                 <p className=' w-full md:w-[500px] lg:w-[500px] text-yellow-50 text-xl mt-4 mb-10'>I break down complex user experinece problems to create integritiy focussed solutions that connect billions of people</p>
                 <div className='flex flex-col md:flex-row lg:flex-row gap-5 items-center mb-4'>
-                   <a href="https://drive.google.com/file/d/1sLPyA6rkMf-8Si5eJMgEpCvw7xv3rE3c/view" download='download.pdf' target='blank'>
-                   <button className='btn rounded-full border border-color1 text-color1 bg-color2 hover:text-yellow-50 hover:bg-color1'>Download Resume <span className='text-xl'><MdOutlineFileDownload></MdOutlineFileDownload></span></button>
-                   </a>
+                   <Link href="https://drive.google.com/file/d/1sLPyA6rkMf-8Si5eJMgEpCvw7xv3rE3c/view" download='download.pdf' target='blank'>
+                   <motion.button
+                   whileHover={{scale:1.1}}
+                   whileTap={{scale:0.9}}
+                   transition={{ duration: 0.3 }}
+                   className='btn rounded-full border border-color1 text-color1 bg-color2 hover:text-yellow-50 hover:bg-color1 transition-6 duration-500'>Download Resume <span className='text-xl'><MdOutlineFileDownload></MdOutlineFileDownload></span></motion.button>
+                   </Link>
                     <div className='flex gap-2'>
                     
                    <Link className=' border border-color1 text-color1 hover:bg-color1 hover:text-yellow-50 transition duration-300 p-3 rounded-full' href={'https://web.facebook.com/MilonHossain32'} target='_blank'>
@@ -34,10 +49,16 @@ const BannerPage = () => {
                 </div>
             </div>
             <div>
-                <div className='border-2 border-color4 hover:border-color1 rounded-lg lg:rotate-3 hover:rotate-0 transition-all duration-300'>
+               <BackgroundGradient>
+               < motion.div
+               initial={{rotate:2}}
+               whileHover={{ scale: 0.98,rotate:0}}
+               transition={{ duration: 0.1 }}
+               className='border-2 border-color4 hover:border-color1 rounded-lg lg:rotate-3 hover:rotate-0 transition-all duration-300'>
                     
                     <Image className='bg-black w-[400px] rounded-lg ' src="https://i.ibb.co/rxtT0Nz/tinywow-change-bg-photo-59253256.png" alt="Imge not found" width={400} height={400} />
-                </div>
+                </motion.div>
+               </BackgroundGradient>
             </div>
            
         </div>

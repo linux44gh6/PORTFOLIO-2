@@ -1,11 +1,9 @@
-'use client'
+ 'use client'
 import Image from 'next/image';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { signIn } from 'next-auth/react';
-
 const LoginPage = () => {
-
     return (
         <div className='flex items-center justify-center min-h-screen border-2 '>
             <div className=''>
