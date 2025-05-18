@@ -1,46 +1,53 @@
-
 import { Blog } from "@/Types";
 import Image from "next/image";
 import { AiFillLike } from "react-icons/ai";
 import { FaCalendar } from "react-icons/fa";
+import { MdPerson } from "react-icons/md";
+
 const BlogDetailsCard = ({ blog }: { blog: Blog }) => {
   return (
-    <div className="w-2/3 bg-color2 shadow-lg rounded-lg mx-auto p-6">
-      <p className="flex items-center justify-center mx-auto text-teal-500 bg-teal-100 w-fit px-3 py-1 rounded-full">
-        <FaCalendar className="mr-2" />
-        {blog.date}
-      </p>
-      <h2 className="text-center text-4xl font-semibold my-5">{blog.title}</h2>
-      <div className="flex items-center justify-center bg-gray-100 mb-5 py-2 rounded-lg gap-2">
-        <Image
-          src="https://cdn-icons-png.flaticon.com/512/219/219986.png"
-          width={30}
-          height={30}
-          alt="author image"
-        />
-
-        <span className="text-lg font-medium">{blog.name}</span>
-      </div>
-      <figure className="mb-5">
+    <article className="max-w-4xl mx-auto bg-white shadow-md rounded-xl overflow-hidden mb-10">
+      {/* Banner Image */}
+      <div className="w-full h-72 relative">
         <Image
           src={blog.image}
-          width={600}
-          height={100}
-          alt="blog image"
-          className="rounded-lg w-full object-cover"
+          alt="Blog banner"
+          layout="fill"
+          objectFit="cover"
+          className="w-full h-full object-cover"
         />
-      </figure>
-      <div className="text-gray-700 text-lg leading-relaxed">
-        <p className="text-justify text-gray-500">{blog.description}</p>
       </div>
-      <div className="flex justify-between items-center mt-5">
-        <div className="flex items-center text-xl text-gray-600">
-          <AiFillLike className="text-teal-500 mr-2" />
-          <span className="mr-1">{blog.likes}</span>
-          Likes
+
+      <div className="p-6 sm:p-10">
+        {/* Blog Title */}
+        <h1 className="text-4xl font-bold text-gray-800 mb-4 text-center leading-tight">
+          {blog.title}
+        </h1>
+
+        {/* Author and Meta */}
+        <div className="flex flex-col sm:flex-row justify-between items-center text-gray-500 mb-6 text-sm">
+          <div className="flex items-center space-x-2">
+            <MdPerson className="text-lg" />
+            <span>{blog.name}</span>
+          </div>
+          <div className="flex items-center space-x-2 mt-2 sm:mt-0">
+            <FaCalendar className="text-md" />
+            <span>{blog.date}</span>
+          </div>
+        </div>
+
+        {/* Blog Description */}
+        <div className="prose max-w-none prose-lg text-gray-700 leading-relaxed">
+          <p>{blog.description}</p>
+        </div>
+
+        {/* Likes */}
+        <div className="mt-10 flex items-center space-x-2 text-teal-600 text-lg font-medium">
+          <AiFillLike />
+          <span>{blog.likes} Likes</span>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

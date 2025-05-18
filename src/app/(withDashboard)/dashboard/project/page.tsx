@@ -6,7 +6,7 @@ export const metadata = {
 }
 const ProjectPage = () => {
     return (
-        <div>
+        <div className='bg-white'>
            <ProjectForm/>
         </div>
     );

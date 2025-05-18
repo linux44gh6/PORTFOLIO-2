@@ -69,12 +69,12 @@ const BannerPage = () => {
         
              
                <div className='text-white flex flex-col items-center md:flex-row justify-center lg:flex-row lg:justify-around gap-4 lg:gap-0 mt-10'>
-               <h1 className='flex items-center gap-2  font-font1'><span className='text-3xl md:text-5xl lg:text-5xl font-extrabold'>{ <CountUp start={0} end={1}></CountUp>}</span> <span className='text-lg md:text-xl lg:text-xl'>Years of
+               <h1 className='flex items-center gap-2  font-font1'><span className='text-3xl md:text-5xl lg:text-5xl font-extrabold'>{ <CountUp start={0} end={0}></CountUp>}</span> <span className='text-lg md:text-xl lg:text-xl'>Years of
                     <br />
                 Experience</span></h1>
-                <h1 className='flex items-center gap-2  font-font1'> <span className='text-3xl md:text-5xl lg:text-5xl font-extrabold'>{ <CountUp start={0} end={50}></CountUp>}+</span><span className='text-xl'>Project <br />
+                <h1 className='flex items-center gap-2  font-font1'> <span className='text-3xl md:text-5xl lg:text-5xl font-extrabold'>{ <CountUp start={0} end={10}></CountUp>}+</span><span className='text-xl'>Project <br />
                 Completed</span></h1>
-                <h1 className='flex items-center gap-2  font-font1'> <span className='text-3xl md:text-5xl lg:text-5xl font-extrabold'>{ <CountUp start={0} end={50}></CountUp>}+</span><span className='text-xl'>Happy <br />
+                <h1 className='flex items-center gap-2  font-font1'> <span className='text-3xl md:text-5xl lg:text-5xl font-extrabold'>{ <CountUp start={0} end={0}></CountUp>}+</span><span className='text-xl'>Happy <br />
                 Clients</span></h1>
                 <h1 className='flex items-center gap-2  font-font1 '> <span className='text-3xl md:text-5xl lg:text-5xl font-extrabold'>{<CountUp start={0} end={3}></CountUp>}</span><span className='text-xl'> Years of <br /> Educational  Experience</span></h1>
                 </div>

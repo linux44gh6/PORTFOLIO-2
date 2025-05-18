@@ -27,32 +27,6 @@ const ProjectPage = () => {
     }
     fetchProject()
   },[])
-  // const projects = [
-  //   {
-  //     id: 1,
-  //     title: "ShowFlix",
-  //     image: "/show.png",
-  //     link: "https://movie-series-client.vercel.app",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Study Hub",
-  //     image: "/project-2.jpg",
-  //     link: "https://study-hub-ec69a.web.app",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Bistro BOSS",
-  //     image: "/project-3.jpg",
-  //     link: "https://bistro-boss-df988.web.app",
-  //   },
-  //     {
-  //     id: 4,
-  //     title: "GlobeGazzer",
-  //     image: "/project-1.jpg",
-  //     link: "https://tourist-guide-2db3b.web.app",
-  //   },
-  // ]
 
   return (
     <section id="project-section">

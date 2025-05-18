@@ -202,7 +202,7 @@ export default function ProjectForm() {
               )}
             />
 
-            <Button type="submit" className="w-full bg-color3 text-white hover:bg-color4">
+            <Button type="submit" className="w-full bg-color4 text-white hover:bg-color4">
               Create
             </Button>
           </form>

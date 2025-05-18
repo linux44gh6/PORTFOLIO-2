@@ -1,27 +1,91 @@
 import { Session } from "next-auth";
-import Image from "next/image";
-import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { ChartComponent } from "../DashBordChart/AriaChart";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card"
+
 const ProfilePage = ( {session}:{session:Session|null}) => {
   const user = session?.user;
   console.log(user);
   return (
-   <div className="flex items-center justify-center min-h-screen">
-	<div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800">
-	<Image src={user?.image ?? "/default-profile.png"} alt="" width={150} height={150} className=" mx-auto rounded-full dark:bg-gray-500 aspect-square" />
-	<div className="space-y-4 text-center divide-y dark:divide-gray-300">
-		<div className="my-2 space-y-1">
-			<h2 className="text-xl font-semibold sm:text-2xl">{user?.name}</h2>
-			<p className="px-5 text-xs sm:text-base dark:text-gray-600">Full-stack developer</p>
+   <div className="bg-white">
+	<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 py-5 px-2">
+		<div>
+			<Card>
+  <CardHeader>
+
+    <CardDescription>
+		New Customers
+	</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <h1 className="text-3xl font-extrabold">500+</h1>
+  </CardContent>
+  <CardFooter>
+    <p>Visitor for last six month</p>
+  </CardFooter>
+</Card>
+
 		</div>
-		<div className="flex justify-center pt-2 space-x-4 align-center">
-			<FaGithub size={30} />
-			<FaLinkedin size={30} />
-			<FaFacebook size={30} />
-			<FaTwitter size={30} />
+		<div>
+			<Card>
+  <CardHeader>
+
+    <CardDescription>
+		New Customers
+	</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <h1 className="text-3xl font-extrabold">500+</h1>
+  </CardContent>
+  <CardFooter>
+    <p>Visitor for last six month</p>
+  </CardFooter>
+</Card>
+
+		</div>
+		<div>
+			<Card>
+  <CardHeader>
+
+    <CardDescription>
+		New Customers
+	</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <h1 className="text-3xl font-extrabold">500+</h1>
+  </CardContent>
+  <CardFooter>
+    <p>Visitor for last six month</p>
+  </CardFooter>
+</Card>
+
+		</div>
+		<div>
+			<Card>
+  <CardHeader>
+
+    <CardDescription>
+		New Customers
+	</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <h1 className="text-3xl font-extrabold">500+</h1>
+  </CardContent>
+  <CardFooter>
+    <p>Visitor for last six month</p>
+  </CardFooter>
+</Card>
+
 		</div>
 	</div>
-</div>
+	<ChartComponent/>
    </div>
+
   );
 };
 

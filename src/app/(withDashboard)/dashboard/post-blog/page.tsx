@@ -7,7 +7,7 @@ export const metadata = {
 
 const page = () => {
     return (
-        <div className="">
+        <div className="bg-white w-full min-h-screen">
             <BlogForm/>
         </div>
     );

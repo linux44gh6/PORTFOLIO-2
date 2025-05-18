@@ -29,14 +29,14 @@ const MessageInbox = () => {
     console.log(contact);
 
     return (
-        <div className="w-[90%] mx-auto mt-20 md:mt-5 lg:mt-5">
+        <div className=" mx-auto mt-20 md:mt-5 lg:mt-0 bg-white min-h-screen">
             <Table>
                 <TableCaption>A list of your recent projects.</TableCaption>
                 <TableHeader>
                     <TableRow className="bg-gradient-to-r from-color3 to-color4">
                         <TableHead className="w-[100px] text-gray-400">Client</TableHead>
-                        <TableHead className="text-gray-400">Email</TableHead>
-                        <TableHead className="text-gray-400">Message</TableHead>
+                        <TableHead className="text-black">Email</TableHead>
+                        <TableHead className="text-black">Message</TableHead>
 
                         <TableHead className="text-gray-400 text-right">Response</TableHead>
                     </TableRow>

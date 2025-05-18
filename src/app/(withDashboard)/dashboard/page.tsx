@@ -9,7 +9,7 @@ const Page = async () => {
     const session = await getServerSession();
 
     return (
-        <div>
+        <div className="bg-white min-h-screen">
             <ProfilePage session={session} />
         </div>
     );
