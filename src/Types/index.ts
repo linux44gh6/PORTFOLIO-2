@@ -44,4 +44,5 @@ export interface Blog {
     email:string,
     password:string,
     role:string
+    image:string
   }

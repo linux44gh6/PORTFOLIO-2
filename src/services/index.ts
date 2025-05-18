@@ -29,6 +29,10 @@ export const loginUser=async(payload:Partial<User>)=>{
     return result
 }
 
+export const logoutUser=async()=>{
+    ((await cookies()).set('token',''))
+}
+
 export const getUser=async()=>{
     const token=((await cookies()).get('token'))?.value
     if(token){

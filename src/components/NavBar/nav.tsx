@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import Image from 'next/image';
 import Link from 'next/link';
@@ -22,12 +23,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { signOut } from 'next-auth/react';
+import type { User } from '@/Types';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { logoutUser } from '@/services';
 
-type SeasonProps = {
-  season:Session|null
-};
+// type SeasonProps = {
+//   season:Session|null
+// };
 
-const NavBarPage = ({ season }: SeasonProps) => {
+const NavBarPage = ({ season, user }: { season: Session | null, user: User | null }) => {
+  console.log(user);
+
   return (
     <div>
       <div className="navbar bg-gradient-to-r from-color3 to-color4">
@@ -44,8 +50,8 @@ const NavBarPage = ({ season }: SeasonProps) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
               </svg>
             </div>
-            <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-            
+            <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow ">
+
               <Link href="/project" className="text-black font-bold text-lg md:text-lg font-font1 capitalize">
                 Projects
               </Link>
@@ -71,7 +77,7 @@ const NavBarPage = ({ season }: SeasonProps) => {
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1 flex gap-5">
-            
+
             <Link href="/project" className="text-white font-bold text-lg md:text-lg font-font1 capitalize">
               Projects
             </Link>
@@ -81,34 +87,49 @@ const NavBarPage = ({ season }: SeasonProps) => {
             <Link href="/contact" className="text-white font-bold text-lg md:text-lg font-font1 capitalize">
               Contact
             </Link>
-           {season?.user&&season.user.role==="admin"&&
-           <Link href="/dashboard" className="text-white font-bold text-lg md:text-lg font-font1 capitalize">
-           DashBoard
-         </Link>
-           }
+            {user && user.role === "admin" &&
+              <Link href="/dashboard" className="text-white font-bold text-lg md:text-lg font-font1 capitalize">
+                DashBoard
+              </Link>
+            }
           </ul>
           <div className="ms-2">
-            {season?.user ? (
-              <DropdownMenu>
-              <DropdownMenuTrigger>
-                <Image
-                  src={season.user.image || '/default-avatar.png'}
-                  width={40}
-                  height={40}
-                  alt="Profile"
-                  className="rounded-full"
-                />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Billing</DropdownMenuItem>
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => signOut()}>LogOut</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            
+            {user? (
+           <div>
+            {
+              user?.role === "admin" ?   <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Avatar>
+                    <AvatarImage src="#" />
+                    <AvatarFallback className='bg-color3 text-white'
+                    >{user.name?.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className='bg-color2 text-white w-52'>
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Dashboard</DropdownMenuItem>
+                  <DropdownMenuItem>Billing</DropdownMenuItem>
+                  <DropdownMenuItem></DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => logoutUser()}>LogOut</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>:   <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Avatar>
+                    <AvatarImage src="#" />
+                    <AvatarFallback className='bg-color3 text-white'
+                    >{user.name?.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className='bg-color2 text-white w-52'>
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem></DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => logoutUser()}>LogOut</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            }
+           </div>
             ) : (
               <Link href="/login">
                 <button className="btn rounded-full px-6 bg-color4 hover:bg-color1 text-white transition font-bold">Login</button>
