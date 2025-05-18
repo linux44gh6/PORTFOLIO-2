@@ -1,118 +1,122 @@
-"use client"
-import { createBlog } from '@/services/actions/createBlog';
-import Form from 'next/form'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { createBlog } from "@/services/actions/createBlog";
+
 const BlogForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+
+  const onSubmit = async (data: any) => {
+    await createBlog(data);
+    reset();
+    setImagePreview(null);
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6">
-        <Form action={createBlog}>
-          <h2 className="text-2xl font-semibold mb-6 text-color3 text-center">
-            Create Blog
-          </h2>
-          <div className="grid grid-cols-2 gap-6">
-            {/* Title */}
+    <div className="flex items-center justify-center min-h-screen bg-muted px-4">
+      <div className="w-full max-w-4xl bg-white shadow-xl rounded-2xl p-8">
+        <h2 className="text-3xl font-bold text-center text-color3 mb-8">
+          Create a Blog
+        </h2>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label
-                htmlFor="title"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Title
-              </label>
+              <label className="block text-sm font-semibold mb-1">Title</label>
               <input
-                type="text"
-                id="title"
-                name="title"
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500"
+                {...register("title", { required: true })}
                 placeholder="Enter blog title"
+                className="input input-bordered w-full"
               />
+              {errors.title && <p className="text-red-500 text-sm">Title is required</p>}
             </div>
-            {/* Author Name */}
+
             <div>
-              <label
-                htmlFor="author"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Author Name
-              </label>
+              <label className="block text-sm font-semibold mb-1">Author Name</label>
               <input
-                type="text"
-                name="author"
-                id="author_name"
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500"
+                {...register("author", { required: true })}
                 placeholder="Enter author name"
+                className="input input-bordered w-full"
               />
+              {errors.author && <p className="text-red-500 text-sm">Author is required</p>}
             </div>
-            {/* Publish Date */}
+
             <div>
-              <label
-                htmlFor="date"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Publish Date
-              </label>
+              <label className="block text-sm font-semibold mb-1">Publish Date</label>
               <input
                 type="date"
-                name="date"
-                id="publish_date"
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500"
+                {...register("date", { required: true })}
+                className="input input-bordered w-full"
               />
+              {errors.date && <p className="text-red-500 text-sm">Date is required</p>}
             </div>
-            {/* Total Likes */}
+
             <div>
-              <label
-                htmlFor="likes"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Total Likes
-              </label>
+              <label className="block text-sm font-semibold mb-1">Total Likes</label>
               <input
                 type="number"
-                name="likes"
-                id="total_likes"
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500"
-                placeholder="Enter total likes"
+                {...register("likes", { required: true })}
+                placeholder="0"
+                className="input input-bordered w-full"
               />
+              {errors.likes && <p className="text-red-500 text-sm">Likes required</p>}
             </div>
           </div>
-          {/* Blog Image (URL Input) */}
-          <div className="my-5">
-            <label
-              htmlFor="image"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Blog Image URL
-            </label>
+
+          {/* Image uploader */}
+          <div>
+            <label className="block text-sm font-semibold mb-1">Blog Image</label>
             <input
-              type="url"
-              id="image"
-              name="blog_image"
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500"
-              placeholder="Paste image URL here"
+              type="file"
+              accept="image/*"
+              {...register("image")}
+              onChange={handleImageChange}
+              className="file-input file-input-bordered w-full"
             />
+            {imagePreview && (
+              <img
+                src={imagePreview}
+                alt="Preview"
+                className="mt-3 rounded-md w-40 h-40 object-cover"
+              />
+            )}
           </div>
+
           {/* Description */}
           <div>
-            <label
-              htmlFor="description"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Description
-            </label>
+            <label className="block text-sm font-semibold mb-1">Description</label>
             <textarea
-              id="description"
-              name="description"
-              rows={4}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500"
+              {...register("description", { required: true })}
               placeholder="Enter blog description"
-            ></textarea>
+              rows={4}
+              className="textarea textarea-bordered w-full"
+            />
+            {errors.description && <p className="text-red-500 text-sm">Description required</p>}
           </div>
+
           <button
             type="submit"
-            className="mt-6 w-full bg-gradient-to-r from-color3 to-color4 text-white py-2 px-4 rounded-md hover:bg-color2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full py-3 text-white font-semibold rounded-xl bg-gradient-to-r from-color3 to-color4 hover:opacity-90 transition"
           >
-            Create
+            Create Blog
           </button>
-        </Form>
+        </form>
       </div>
     </div>
   );

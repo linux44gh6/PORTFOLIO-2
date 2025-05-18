@@ -13,34 +13,46 @@ import "swiper/css/effect-coverflow"
 // Import required modules
 import { Pagination, Navigation, Autoplay, EffectCoverflow } from "swiper/modules"
 import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+import { getProject } from "@/services/actions/getProject"
+import type { Project } from "@/Types"
+
 
 const ProjectPage = () => {
-  const projects = [
-    {
-      id: 1,
-      title: "ShowFlix",
-      image: "/show.png",
-      link: "https://movie-series-client.vercel.app",
-    },
-    {
-      id: 2,
-      title: "Study Hub",
-      image: "/project-2.jpg",
-      link: "https://study-hub-ec69a.web.app",
-    },
-    {
-      id: 3,
-      title: "Bistro BOSS",
-      image: "/project-3.jpg",
-      link: "https://bistro-boss-df988.web.app",
-    },
-      {
-      id: 4,
-      title: "GlobeGazzer",
-      image: "/project-1.jpg",
-      link: "https://tourist-guide-2db3b.web.app",
-    },
-  ]
+  const [projects, setProject] = useState<Project[]>([])
+  useEffect(()=>{
+    const fetchProject=async()=>{
+      const res=await getProject()
+      setProject(res.data)
+    }
+    fetchProject()
+  },[])
+  // const projects = [
+  //   {
+  //     id: 1,
+  //     title: "ShowFlix",
+  //     image: "/show.png",
+  //     link: "https://movie-series-client.vercel.app",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Study Hub",
+  //     image: "/project-2.jpg",
+  //     link: "https://study-hub-ec69a.web.app",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Bistro BOSS",
+  //     image: "/project-3.jpg",
+  //     link: "https://bistro-boss-df988.web.app",
+  //   },
+  //     {
+  //     id: 4,
+  //     title: "GlobeGazzer",
+  //     image: "/project-1.jpg",
+  //     link: "https://tourist-guide-2db3b.web.app",
+  //   },
+  // ]
 
   return (
     <section id="project-section">
@@ -83,10 +95,10 @@ const ProjectPage = () => {
             modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
             className="mySwiper"
           >
-            {projects.map((project) => (
-              <SwiperSlide key={project.id} className="swiper-slide">
-                <div className="p-4">
-                  <Link href={project.link} target="_blank">
+            {projects&&projects?.map((project) => (
+              <SwiperSlide key={project._id} className="swiper-slide">
+                <div className="p-4" >
+                  <Link href={project.live_link} target="_blank">
                     <div className="transition duration-300 group relative rounded-lg overflow-hidden">
                       <div className="h-[300px] md:h-[400px] lg:h-[500px] relative w-full">
                         <Image

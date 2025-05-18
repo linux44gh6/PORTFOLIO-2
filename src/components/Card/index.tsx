@@ -6,17 +6,19 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import Image from "next/image"
+import Link from "next/link"
 import { ReactNode } from "react"
 import { FiGithub, FiExternalLink } from "react-icons/fi"
 
 interface Project {
+  _id:string
   title: string
   description?: string
   content?: ReactNode
   image?: string
   tags?: string[]
-  github_url?: string
-  live_url?: string
+  github_link?: string
+  live_link?: string
 }
 
 interface CardComponentProps {
@@ -30,6 +32,8 @@ export default function CardComponent({
   className = "",
   imagePriority = false 
 }: CardComponentProps) {
+
+  console.log(project);
   return (
     <Card className={`group relative overflow-hidden transition-transform duration-300 hover:scale-[1.02] ${className}`}>
       {/* Image with Gradient Overlay */}
@@ -46,11 +50,10 @@ export default function CardComponent({
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent transition-opacity duration-300" />
         </div>
       )}
-
       <CardHeader className="relative space-y-4">
         {/* Title with hover effect */}
         <CardTitle className="text-2xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">
-          {project.title}
+          <Link href={`/project/${project._id}`}>{project.title}</Link>
         </CardTitle>
 
         {/* Tags */}
@@ -80,9 +83,9 @@ export default function CardComponent({
 
         {/* Links */}
         <div className="flex items-center gap-3">
-          {project.github_url && (
+          {project.github_link && (
             <a
-              href={project.github_url}
+              href={project.github_link}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-primary/20 hover:shadow-sm"
@@ -91,9 +94,9 @@ export default function CardComponent({
               Code
             </a>
           )}
-          {project.live_url && (
+          {project.live_link && (
             <a
-              href={project.live_url}
+              href={project.live_link}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-purple-500 px-4 py-2 text-sm font-medium text-white shadow-md transition-all hover:shadow-lg"

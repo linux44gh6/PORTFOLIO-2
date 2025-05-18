@@ -28,6 +28,7 @@ export interface Blog {
     image: string;
     github_link: string;
     live_link: string;
+    techStack: string[];
   }
 
   export interface Contact{
