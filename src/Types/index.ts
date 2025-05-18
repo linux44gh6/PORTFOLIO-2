@@ -37,3 +37,11 @@ export interface Blog {
     message:string
     service:string
   }
+
+  export interface User{
+    _id:string,
+    name:string,
+    email:string,
+    password:string,
+    role:string
+  }

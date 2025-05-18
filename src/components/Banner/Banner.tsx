@@ -42,7 +42,11 @@ const BannerPage = () => {
                    <Link className=' border border-color1 text-color1 hover:bg-color1 hover:text-yellow-50 transition duration-300 p-3 rounded-full' href={'https://www.linkedin.com/in/mdmilonhossain32'} target='_blank'>
                    <FaLinkedinIn></FaLinkedinIn></Link>
                    <Link className=' border border-color1 text-color1 hover:bg-color1 hover:text-yellow-50 transition duration-300 p-3 rounded-full' href={''}>
-                   <FaDribbble></FaDribbble></Link>
+                  <motion.span
+                     whileHover={{scale:1.1}}
+                     whileTap={{scale:0.9}}
+                     transition={{ duration: 0.3 }}
+                  > <FaDribbble></FaDribbble></motion.span></Link>
                    <Link className=' border border-color1 text-color1 hover:bg-color1 hover:text-yellow-50 transition duration-300 p-3 rounded-full' href={'https://github.com/linux44gh6'} target='_blank'>
                    <FaGithub></FaGithub></Link>
                     </div>

@@ -1,6 +1,6 @@
 
 
-import { createProject } from '@/actions/createProject';
+import { createProject } from '@/services/actions/createProject';
 import Form from 'next/form'
 const ProjectForm = () => {
   return (
@@ -32,7 +32,7 @@ const ProjectForm = () => {
                 htmlFor="live_url"
                 className="block text-sm font-medium text-gray-700"
               >
-               Live URL
+                Live URL
               </label>
               <input
                 type="url"

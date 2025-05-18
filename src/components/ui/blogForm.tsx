@@ -1,4 +1,5 @@
-import { createBlog } from '@/actions/createBlog';
+"use client"
+import { createBlog } from '@/services/actions/createBlog';
 import Form from 'next/form'
 const BlogForm = () => {
   return (

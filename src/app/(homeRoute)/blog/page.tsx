@@ -1,4 +1,4 @@
-"use server"
+
 import BlogCard from "@/components/ui/BlogCard";
 import { Blog } from "@/Types";
  export const metadata = {
@@ -11,7 +11,7 @@ const Page = async () => {
   });
 const blogs=await res.json();
   return (
-    <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-[95%] mx-auto py-10">
+    <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-[100%] mx-auto py-10 bg-gradient-to-t from-color2 to-color4 p-5">
         {
             blogs.data.map((blog:Blog)=>{
                 return <BlogCard blog={blog} key={blog._id}/>

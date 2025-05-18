@@ -1,45 +1,43 @@
 'use client'
 
-import { FcGoogle } from "react-icons/fc"
-import { FaGithub } from "react-icons/fa"
-import { signIn } from 'next-auth/react'
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
-import { loginUser } from "@/services"
+import { createUser } from "@/services"
 import { toast } from "sonner"
-import { redirect } from "next/navigation"
-
 
 type FormData = {
+    name: string
   email: string
   password: string
 }
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm<FormData>({
     defaultValues: {
+        name:'',
       email: '',
       password: ''
     }
   })
 
-  const onSubmit =async (data: FormData) => {
-   const result=await loginUser(data)
-   console.log(result);
-   if(result.success){
-       toast.success('Login Successfully')
-       redirect('/')
-   }else{
-       toast.error(result.message)
-   }
+  const onSubmit = async(data: FormData) => {
+    const id=toast.loading("Creating user...")
+    console.log("Form data:", data)
+    const result=await createUser(data)
+    if(result.success===true){
+        toast.success("User created successfully",{id})
+    }else{
+        toast.error(result.message,{id})
+    }
+    
   }
 
   return (
@@ -50,6 +48,18 @@ const LoginPage = () => {
         </CardHeader>
         <CardContent className="space-y-6">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Your name</Label>
+              <Input
+                id="name"
+                type="text"
+                placeholder="John Doe"
+                {...register("name", { required: "Name is required" })}
+              />
+              {errors.email && (
+                <p className="text-sm text-red-500">{errors.email.message}</p>
+              )}
+            </div>
             <div className="space-y-2">
               <Label htmlFor="email">Your Email</Label>
               <Input
@@ -78,40 +88,12 @@ const LoginPage = () => {
               Login
             </Button>
           </form>
-            <p>Do not have any account?<Link href={'/registration'}><span className="text-blue-600 font-bold">SingUp</span></Link></p>
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t"></span>
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">or</span>
-            </div>
-          </div>
+            <p>Already have an account?<Link href={'/login'}><span className="text-blue-600 font-bold">SingIn</span></Link></p>
 
-          <div className="grid grid-cols-2 gap-4">
-            <Button
-              type="button"
-              variant="outline"
-              className="flex items-center justify-center gap-2"
-              onClick={() => signIn('google', { callbackUrl: 'http://localhost:3000' })}
-            >
-              <FcGoogle className="text-xl" />
-              Google
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              className="flex items-center justify-center gap-2"
-              onClick={() => signIn('github', { callbackUrl: 'http://localhost:3000' })}
-            >
-              <FaGithub className="text-xl" />
-              GitHub
-            </Button>
-          </div>
         </CardContent>
       </Card>
     </div>
   )
 }
 
-export default LoginPage
+export default RegisterPage

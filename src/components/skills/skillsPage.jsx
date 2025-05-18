@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { BackgroundBeamsWithCollision } from "../ui/background-beams-with-collision";
-import { PinContainer } from "../ui/3D-Pin";
 
 const skills = [
   {name:'C',src: '/C_Logo.png'},

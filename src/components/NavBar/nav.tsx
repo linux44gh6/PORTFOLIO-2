@@ -2,6 +2,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Session } from "next-auth";
+
+declare module "next-auth" {
+  interface Session {
+    user: {
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+      role?: string; // Add the role property
+    };
+  }
+}
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -70,9 +81,11 @@ const NavBarPage = ({ season }: SeasonProps) => {
             <Link href="/contact" className="text-white font-bold text-lg md:text-lg font-font1 capitalize">
               Contact
             </Link>
-            <Link href="/dashboard" className="text-white font-bold text-lg md:text-lg font-font1 capitalize">
-              DashBoard
-            </Link>
+           {season?.user&&season.user.role==="admin"&&
+           <Link href="/dashboard" className="text-white font-bold text-lg md:text-lg font-font1 capitalize">
+           DashBoard
+         </Link>
+           }
           </ul>
           <div className="ms-2">
             {season?.user ? (

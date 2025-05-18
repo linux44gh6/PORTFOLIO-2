@@ -1,7 +1,7 @@
 'use client'
 
-import { deleteProject } from "@/actions/DeleteProject";
-import { getProject } from "@/actions/getProject";
+import { deleteProject } from "@/services/actions/DeleteProject";
+import { getProject } from "@/services/actions/getProject";
 import { Button } from "@/components/ui/button";
 import Spinner from "@/components/ui/Sppiner";
 import {
@@ -24,11 +24,11 @@ const Page = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             const data = await getProject();
-            setProjects(data.data || []); 
+            setProjects(data.data || []);
         };
 
         fetchProjects();
-    }, []); 
+    }, []);
 
     // Display spinner if no projects are available yet
     if (projects.length === 0) {
@@ -44,7 +44,7 @@ const Page = () => {
         } catch (error) {
             console.error("Error deleting project:", error);
         } finally {
-            setLoading(false); 
+            setLoading(false);
         }
     };
 

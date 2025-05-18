@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getBlogs } from "@/actions/getBlogs";
+import { getBlogs } from "@/services/actions/getBlogs";
 import { Button } from "@/components/ui/button";
 import {
     Table,
@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/table";
 import { Blog } from "@/Types";
 import Spinner from "@/components/ui/Sppiner";
-import { deleteBlog } from "@/actions/DeleteBlog";
+import { deleteBlog } from "@/services/actions/DeleteBlog";
 
 // Define the component with proper type annotations
 const Page = () => {
@@ -23,7 +23,7 @@ const Page = () => {
 
     useEffect(() => {
         const fetchBlogs = async () => {
-            const data = await getBlogs(); 
+            const data = await getBlogs();
             setBlogs(data.data || []);
         };
 
@@ -31,9 +31,9 @@ const Page = () => {
     }, []); // Runs once on component mount
 
     if (!blogs) {
-        return <Spinner/>
+        return <Spinner />
     }
-    const handelToDelete=async(id:string)=>{
+    const handelToDelete = async (id: string) => {
         setLoading(true)
         try {
             await deleteBlog(id);
@@ -46,7 +46,7 @@ const Page = () => {
         }
     }
     if (loading) {
-        return <Spinner/>
+        return <Spinner />
     }
     return (
         <div className="w-[90%] mx-auto mt-20 md:mt-5 lg:mt-5">

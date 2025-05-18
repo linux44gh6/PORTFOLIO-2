@@ -1,4 +1,3 @@
-"use server"
 
 import BlogForm from "@/components/ui/blogForm";
 export const metadata = {
