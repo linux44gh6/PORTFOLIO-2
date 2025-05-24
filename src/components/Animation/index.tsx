@@ -35,11 +35,11 @@ export const AnimatedTextSide = ({ children,duration }:{children: React.ReactNod
   return (
     <motion.div
       initial={{ 
-        transform: 'translateX(-100px)', 
+        transform: 'translateY(-100px)', 
         opacity: 0 
       }}
       whileInView={{ 
-        transform: 'translateX(0px)', 
+        transform: 'translateY(0px)', 
         opacity: 1 
       }}
       viewport={{ 
@@ -64,11 +64,11 @@ export const AnimatedTextSideRight = ({ children,duration }:{children: React.Rea
   return (
     <motion.div
       initial={{ 
-        transform: 'translateX(100px)', 
+        transform: 'translateY(100px)', 
         opacity: 0 
       }}
       whileInView={{ 
-        transform: 'translateX(0px)', 
+        transform: 'translateY(0px)', 
         opacity: 1 
       }}
       viewport={{ 
