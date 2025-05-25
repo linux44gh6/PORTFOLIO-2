@@ -1,14 +1,11 @@
 'use client'
 
-import { FcGoogle } from "react-icons/fc"
-import { FaGithub } from "react-icons/fa"
-import { signIn } from 'next-auth/react'
+
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import Link from "next/link"
 import { loginUser } from "@/services"
 import { toast } from "sonner"
 import { redirect } from "next/navigation"
@@ -78,7 +75,6 @@ const LoginPage = () => {
               Login
             </Button>
           </form>
-            <p>Do not have any account?<Link href={'/registration'}><span className="text-blue-600 font-bold">SingUp</span></Link></p>
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t"></span>
@@ -88,26 +84,7 @@ const LoginPage = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <Button
-              type="button"
-              variant="outline"
-              className="flex items-center justify-center gap-2"
-              onClick={() => signIn('google', { callbackUrl: 'http://localhost:3000' })}
-            >
-              <FcGoogle className="text-xl" />
-              Google
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              className="flex items-center justify-center gap-2"
-              onClick={() => signIn('github', { callbackUrl: 'http://localhost:3000' })}
-            >
-              <FaGithub className="text-xl" />
-              GitHub
-            </Button>
-          </div>
+         
         </CardContent>
       </Card>
     </div>
