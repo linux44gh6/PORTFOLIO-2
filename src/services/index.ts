@@ -3,7 +3,7 @@ import type { User } from "@/Types"
 import { cookies } from "next/headers"
 import { jwtDecode } from "jwt-decode";
 export const createUser=async(payload:Partial<User>)=>{
-    const res=await fetch(`http://localhost:5000/api/auth/create-user`,{
+    const res=await fetch(`https://n-backend-sigma.vercel.app/api/auth/create-user`,{
         method:'POST',
         headers:{
             'Content-Type':'application/json'
@@ -15,7 +15,7 @@ export const createUser=async(payload:Partial<User>)=>{
 }
 
 export const loginUser=async(payload:Partial<User>)=>{
-    const res=await fetch(`http://localhost:5000/api/auth/login`,{
+    const res=await fetch(`https://n-backend-sigma.vercel.app/api/auth/login`,{
         method:'POST',
         headers:{
             'Content-Type':'application/json'

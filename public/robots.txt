@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://portfolio-gilt-two-24.vercel.app
+
+# Sitemaps
+Sitemap: https://portfolio-gilt-two-24.vercel.app/sitemap.xml
